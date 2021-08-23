@@ -52,7 +52,7 @@ function ListScreen({navigation}) {
                   [
                     {
                       text: 'Yes',
-                      onPress: () => Alert.alert('Details Added'),
+                      onPress: () => navigation.navigate('Details'),
                     },
                     {text: 'No', onPress: () => Alert.alert('Details Deleted')},
                   ],
@@ -67,7 +67,7 @@ function ListScreen({navigation}) {
       />
       <Button
         title="Added Details"
-        onPress={() => navigation.navigate('Details')}
+        onPress={() => navigation.navigate('Records')}
         // onPress={() => console.warn('NO BOSS RULES')}
       />
     </SafeAreaView>

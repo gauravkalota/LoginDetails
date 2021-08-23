@@ -11,19 +11,24 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
+import GlobalVariables from '../components/GlobalVariables';
 
 function ProfileCardView({navigation}) {
   const [text1, settext1] = useState('Leanne Graham');
   const [text2, settext2] = useState('1-770-736-8031 x56442');
 
-  (onClickListener1 = () => {
+  onClickListener1 = () => {
     settext1(' ');
     settext2(' ');
-  }),
-    (onClickListener2 = () => {
-      settext1('Patricia Lebsack ');
-      settext2('493-170-9623 x156 ');
-    });
+    // global.textname = ' ';
+    // global.textphonedetail = ' ';
+    Alert.alert('Are you sure you want to discard the changes');
+    navigation.navigate('Records');
+  };
+  // (onClickListener2 = () => {
+  //   settext1('Patricia Lebsack ');
+  //   settext2('493-170-9623 x156 ');
+  // });
 
   return (
     <SafeAreaView style={styles.scrollContainer}>
@@ -39,19 +44,19 @@ function ProfileCardView({navigation}) {
         </View>
         <View>
           <Text style={styles.container}>Name :{text1}</Text>
-          <Text style={styles.container}>Phone No :{text2} </Text>
+          <Text style={styles.container}>Phone No :{text2}</Text>
         </View>
 
-        <TouchableHighlight onPress={() => onClickListener1()}>
+        {/* <TouchableHighlight onPress={() => onClickListener1()}>
           <Text style={styles.container2}>Delete Details</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onClickListener2()}>
           <Text style={styles.container2}>Update Details</Text>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
         <Button
           style={styles.container2}
-          title="LOGOUT"
-          onPress={() => navigation.navigate('Login')}
+          title="Delete"
+          onPress={() => onClickListener1()}
         />
       </View>
     </SafeAreaView>

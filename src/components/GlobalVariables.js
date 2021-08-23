@@ -1,5 +1,5 @@
-global.textname = 'name';
-global.textphonedetail = '9XXXXXXXX9';
+global.textname = 'Leanne Graham';
+global.textphonedetail = '1-770-736-8031-X56442';
 
 //HOW TO USE GLOBAL VARIABLES
 //{global.textname is you want to use name }

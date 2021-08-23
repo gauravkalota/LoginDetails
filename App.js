@@ -26,6 +26,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginScreen from './src/screens/Login';
 import ListScreen from './src/screens/List';
 import DetailsScreen from './src/screens/Details';
+import RecordCard from './src/screens/Records';
 
 // function LoginScreen({navigation}) {
 //   const [name, setName] = useState('');
@@ -239,6 +240,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="List" component={ListScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Records" component={RecordCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );
