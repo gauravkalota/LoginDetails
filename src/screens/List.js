@@ -5,13 +5,11 @@ import {
   Text,
   FlatList,
   View,
-  TextInput,
-  Button,
-  TouchableHighlight,
   TouchableOpacity,
   Image,
   Alert,
 } from 'react-native';
+import GlobalVariables from '../components/GlobalVariables';
 
 function ListScreen({navigation}) {
   // List Screen -API Fetch
@@ -25,6 +23,12 @@ function ListScreen({navigation}) {
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   }, []);
+  /////GlobalVariable state change
+  const onClickLyes = (na, num) => {
+    global.textname = na;
+    global.textphonedetail = num;
+    // navigation.navigate('Details');
+  };
 
   return (
     <SafeAreaView style={styles.container2}>
@@ -52,9 +56,11 @@ function ListScreen({navigation}) {
                   [
                     {
                       text: 'Yes',
-                      onPress: () => navigation.navigate('Details'),
+                      onPress: () => onClickLyes(item.name, item.phone),
                     },
-                    {text: 'No', onPress: () => Alert.alert('Details Deleted')},
+                    {
+                      text: 'No',
+                    },
                   ],
                 )
               }
@@ -65,11 +71,11 @@ function ListScreen({navigation}) {
         )}
         keyExtractor={(item, index) => index}
       />
-      <Button
+      {/* <Button
         title="Added Details"
         onPress={() => navigation.navigate('Records')}
         // onPress={() => console.warn('NO BOSS RULES')}
-      />
+      /> */}
     </SafeAreaView>
   );
 }
@@ -126,7 +132,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     backgroundColor: '#FFF',
-    width: '80%',
+    width: '90%',
     flex: 1,
     alignSelf: 'center',
     flexDirection: 'row',
@@ -145,7 +151,7 @@ const styles = StyleSheet.create({
   },
   container2: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: '#e4fcff',
     marginTop: 60,
   },
 });

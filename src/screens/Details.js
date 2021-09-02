@@ -5,60 +5,59 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight,
   Image,
-  Alert,
-  ScrollView,
   Button,
+  TouchableHighlight,
 } from 'react-native';
-import GlobalVariables from '../components/GlobalVariables';
 
+onClickListener1 = () => {
+  global.textname = ' ';
+  global.textphonedetail = ' ';
+};
+
+// function RecordCard({navigation}) {
+//   return (
+//     <View>
+//       <Text>Records Not Found!</Text>
+//       <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+//         <Text>Back</Text>
+//       </TouchableHighlight>
+//     </View>
+//   );
+// }
 function ProfileCardView({navigation}) {
-  const [text1, settext1] = useState('Leanne Graham');
-  const [text2, settext2] = useState('1-770-736-8031 x56442');
-
-  onClickListener1 = () => {
-    settext1(' ');
-    settext2(' ');
-    // global.textname = ' ';
-    // global.textphonedetail = ' ';
-    Alert.alert('Are you sure you want to discard the changes');
-    navigation.navigate('Records');
-  };
-  // (onClickListener2 = () => {
-  //   settext1('Patricia Lebsack ');
-  //   settext2('493-170-9623 x156 ');
-  // });
-
   return (
     <SafeAreaView style={styles.scrollContainer}>
-      <View style={styles.container}>
-        <View style={styles.box}>
-          <Image
-            style={styles.profileImage}
-            source={{
-              uri: 'https://img-premium.flaticon.com/png/512/522/premium/522288.png?token=exp=1629698339~hmac=52692e2e76ea5a559c6ef56e1d1ace4d',
-            }}
+      {global.textname != null && global.textphonedetail != null ? (
+        <View style={styles.container}>
+          <View style={styles.box}>
+            <Image
+              style={styles.profileImage}
+              source={{
+                uri: 'https://img-premium.flaticon.com/png/512/522/premium/522288.png?token=exp=1629698339~hmac=52692e2e76ea5a559c6ef56e1d1ace4d',
+              }}
+            />
+          </View>
+          <View>
+            <Text style={styles.container}>Name :{global.textname}</Text>
+            <Text style={styles.container}>
+              Phone No :{global.textphonedetail}
+            </Text>
+          </View>
+          <Button
+            style={styles.container2}
+            title="Delete"
+            onPress={() => onClickListener1()}
           />
-          <Text style={styles.name}></Text>
         </View>
+      ) : (
         <View>
-          <Text style={styles.container}>Name :{text1}</Text>
-          <Text style={styles.container}>Phone No :{text2}</Text>
+          <Text>Records Not Found!</Text>
+          <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <Text>Back</Text>
+          </TouchableHighlight>
         </View>
-
-        {/* <TouchableHighlight onPress={() => onClickListener1()}>
-          <Text style={styles.container2}>Delete Details</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => onClickListener2()}>
-          <Text style={styles.container2}>Update Details</Text>
-        </TouchableHighlight> */}
-        <Button
-          style={styles.container2}
-          title="Delete"
-          onPress={() => onClickListener1()}
-        />
-      </View>
+      )}
     </SafeAreaView>
   );
 }
@@ -68,6 +67,7 @@ export default ProfileCardView;
 const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
+    backgroundColor: '#e4fcff',
   },
   container2: {
     padding: 20,

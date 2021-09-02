@@ -27,6 +27,8 @@ import LoginScreen from './src/screens/Login';
 import ListScreen from './src/screens/List';
 import DetailsScreen from './src/screens/Details';
 import RecordCard from './src/screens/Records';
+import Logout from './src/screens/Logout';
+import RegisterScreen from './src/screens/Register';
 
 // function LoginScreen({navigation}) {
 //   const [name, setName] = useState('');
@@ -218,16 +220,20 @@ import RecordCard from './src/screens/Records';
 // }
 
 const Stack = createNativeStackNavigator();
-// // const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-// // // function TabScreen() {
-// // //   return (
-// // //     <Tab.Navigator>
-// // //       <Tab.Screen name="List" component={ListScreen} />
-// // //       <Tab.Screen name="Details" component={DetailsScreen} />
-// // //     </Tab.Navigator>
-// // //   );
-// // // }
+function TabScreen() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Tab.Screen name="List" component={ListScreen} />
+      <Tab.Screen name="Details" component={DetailsScreen} />
+      <Tab.Screen name="Logout" component={Logout} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -238,9 +244,10 @@ export default function App() {
         }}
         initialRouteName="Home">
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="List" component={ListScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="List" component={TabScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Records" component={RecordCard} />
+        {/* <Stack.Screen name="Records" component={RecordCard} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
